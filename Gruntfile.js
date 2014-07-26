@@ -12,7 +12,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
@@ -35,6 +35,23 @@ module.exports = function ( grunt ) {
      * version. It's already there, so we don't repeat ourselves here.
      */
     pkg: grunt.file.readJSON("package.json"),
+
+    connect: {
+      server: {
+        options: {
+          port: 9000,
+          hostname: '*',
+          base: 'build',
+          middleware: function(connect) {
+            var rewrite = require('connect-modrewrite');
+            return [
+              rewrite(['^(?!/?(assets|vendor|src|templates-)).*$ /index.html [L]']),
+              connect.static('build/')
+            ];
+          }            
+        }
+      }
+    },
 
     /**
      * The banner is the comment that is placed at the top of our compiled 
@@ -315,6 +332,11 @@ module.exports = function ( grunt ) {
      * part of the initial payload as one JavaScript file. Neat!
      */
     html2js: {
+      options: {
+        rename: function(name) {
+          return name.replace('.jade', '').replace('.html', '');
+        }
+      },
       /**
        * These are the templates from `src/app`.
        */
@@ -542,7 +564,7 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'connect', 'delta'] );
 
   /**
    * The default task is to build and compile.

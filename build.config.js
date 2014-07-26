@@ -26,8 +26,8 @@ module.exports = {
     coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
     coffeeunit: [ 'src/**/*.spec.coffee' ],
 
-    atpl: [ 'src/app/**/*.tpl.html', 'src/app/**/*.tpl.jade'],
-    ctpl: [ 'src/common/**/*.tpl.html', 'src/app/**/*.tpl.jade' ],
+    atpl: [ 'src/app/**/*.html', 'src/app/**/*.jade'],
+    ctpl: [ 'src/common/**/*.html', 'src/app/**/*.jade' ],
 
     html: [ 'src/index.html' ],
     less: 'src/less/main.less'
