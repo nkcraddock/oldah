@@ -12,6 +12,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
