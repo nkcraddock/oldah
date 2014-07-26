@@ -1,3 +1,19 @@
-div(ng-bind='problem')
-input(type='text', name='answer', ng-enter='makeGuess()', ng-model='guess')
+#game(style='font-size: 8em;')
+  .row
+    .col-md-3.text-center
+      .label.label-danger(ng-bind='problem')
+  .row(style='margin: 30px 0;')
+    .col-md-3
+      input.col-md-6(ng-enter='makeGuess()', ng-model='guess', style='font-size: 0.5em')
+
+  .row(style='font-size: 0.25em;')
+    .col-md-1.text-center
+      .label.label-success(ng-bind='wins')
+      h1 W
+    .col-md-1.text-center
+      .label.label-info(ng-bind='guesses')
+      h1 G
+    .col-md-1.text-center
+      .label.label-primary(ng-bind='winRatio')
+      h1 %
 

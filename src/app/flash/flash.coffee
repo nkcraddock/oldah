@@ -12,34 +12,32 @@ app.config ($stateProvider) ->
     data:
       pageTitle: 'Flash'
 
-app.controller 'FlashCtrl', ($scope) ->
-  operators = ['*', '-', '+']
+app.controller 'FlashCtrl', ($scope, mathGameService) ->
+  $scope.wins = 0
+  $scope.guesses = 0
+  $scope.winRatio = 0
 
-  flashResult = (correct) ->
-    console.log correct
+  processResult = (correct) ->
+    do win if correct
+    do nextGuess
 
-  reset = () ->
-    $scope.problem = getOperand() + ' ' + getOperator() + ' ' + getOperand()
-    resetGuess()
+  win = () ->
+    $scope.wins += 1
+    nextProblem()
 
-  resetGuess = () ->
+  nextProblem = () ->
+    $scope.problem = mathGameService.randomProblem()
+
+  nextGuess = () ->
+    $scope.guesses += 1
     $scope.guess = ''
-
-  getOperand = () ->
-    Math.floor ((Math.random() * 100) % 12) + 1
-
-  getOperator = () ->
-    which = Math.floor((Math.random() * 100) % operators.length)
-    operators[which]
+    $scope.winRatio = Math.floor ($scope.wins / $scope.guesses) * 100
 
   $scope.makeGuess = () ->
     result = eval $scope.problem
     guess = Number $scope.guess
     correct = guess is result
-    flashResult correct
-    if correct
-      reset()
-    else
-      resetGuess()
+    do win if correct
+    nextGuess()
 
-  reset()
+  nextProblem()
