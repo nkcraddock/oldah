@@ -20,9 +20,6 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
 
-  /**
-   * Load in our build configuration file.
-   */
   var userConfig = require( './build.config.js' );
 
   /**
@@ -36,6 +33,12 @@ module.exports = function ( grunt ) {
      */
     pkg: grunt.file.readJSON("package.json"),
 
+    /**
+     * connect is the static http host that hosts the build/ directory for
+     * debugging and whatnot. The url rewrite in the middleware is needed
+     * to route all traffic (except the |-delimited exceptions) to 
+     * /index.html so that angularjs can handle the routing.
+     */
     connect: {
       server: {
         options: {
