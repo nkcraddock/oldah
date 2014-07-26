@@ -1,8 +1,8 @@
-angular.module('ngBoilerplate', [
+angular.module('oldah', [
     'templates-app',
     'templates-common',
-    'ngBoilerplate.home',
-    'ngBoilerplate.about',
+    'oldah.home',
+    'oldah.about',
     'ui.router'
 ])
 
