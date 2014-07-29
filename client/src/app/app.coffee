@@ -3,6 +3,7 @@ angular.module('oldah', [
     'templates-common'
     'oldah.home'
     'oldah.flash'
+    'oldah.auth'
     'ui.router'
     'ngEnter'
 ])
@@ -13,4 +14,3 @@ angular.module('oldah', [
 .controller 'AppCtrl', ($scope, $location) ->
   $scope.$on '$stateChangeSuccess', (event, toState) ->
     $scope.pageTitle = "#{toState.data.pageTitle} | say oldah!"
-
