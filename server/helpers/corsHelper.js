@@ -12,7 +12,6 @@ var restify = require('restify');
  */
 
 var CORSHelper = function( options ) {
-
   var allowedOrigins = options.origins || [];
   var allowedHeaders = restify.CORS.ALLOW_HEADERS.concat( options.headers || [] );
 

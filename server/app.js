@@ -91,10 +91,11 @@ var corsOptions = {
   headers: nconf.get('CORS:Headers'),
 };
 
-server.pre( restify.CORS(corsOptions) );
+server.pre(restify.CORS(corsOptions));
 
-if ( corsOptions.headers.length ) {
-  server.on('MethodNotAllowed', require( path.join(__dirname, 'helpers', 'corsHelper.js') )() );
+if (corsOptions.headers.length) {
+  var corsHelper = require(path.join(__dirname, 'helpers', 'corsHelper.js'))(corsOptions);
+  server.on('MethodNotAllowed', corsHelper);
 }
 
 /**

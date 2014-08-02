@@ -11,8 +11,9 @@
     "bunyan": "0.23.x",
     "lodash": "*",
     "nconf": "0.6.x",
-    "request": "2.37.x",
-    "restify": "2.8.x"
+    "request": "~2.37.0",
+    "restify": "2.8.x",
+    "q": "~1.0.1"
   },
   "devDependencies": {
     "supertest": "^0.13.0"

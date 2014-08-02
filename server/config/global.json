@@ -21,13 +21,13 @@
   },
   "CORS": {
     "Credentials": false,
-    "Origins": [],
-    "Headers": []
+    "Origins": ["http://localhost:9000"],
+    "Headers": ["authorization"]
   },
   "Security": {
     "UseAuth": true,
     "UseACL": true,
-    "Scheme": "Custom",
+    "Scheme": "oauth2",
     "StringToSign": "X-Custom-Date",
     "AllowAnonymous": true,
     "Users": [
@@ -36,10 +36,9 @@
         "role": "anonymous"
       },
       {
-        "name": "dominik",
+        "name": "nathan",
         "role": "admin",
-        "key": "df7cab0c18e3c3d82b977bcd667d1aeb70ada9fd",
-        "secret": "33yrDBjjw9grl3vNZn0a63Ctqf0="
+        "key": "nkcraddock@gmail.com"
       },
       {
         "name": "not_dominik",

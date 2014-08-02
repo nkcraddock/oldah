@@ -21,4 +21,7 @@ app.controller 'OAuth2Ctrl', ($rootScope, $location, $http) ->
   
   $http.get(url).success (data) ->
     $rootScope.email = data.email
+    $http.defaults.headers.common['authorization'] = matches[1]
     $location.url('/home')
+    $http.get('http://localhost:1337/secret').success (data) ->
+      console.log(data)
