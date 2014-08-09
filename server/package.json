@@ -13,7 +13,9 @@
     "nconf": "0.6.x",
     "request": "~2.37.0",
     "restify": "2.8.x",
-    "q": "~1.0.1"
+    "q": "~1.0.1",
+    "restify-mongoose": "~0.2.2",
+    "mongoose": "~3.8.14"
   },
   "devDependencies": {
     "supertest": "^0.13.0"

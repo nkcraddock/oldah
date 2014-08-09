@@ -24,6 +24,9 @@
     "Origins": ["http://localhost:9000"],
     "Headers": ["authorization"]
   },
+  "mongo": {
+    "uri": "mongodb://localhost/oldah"
+  },
   "Security": {
     "UseAuth": true,
     "UseACL": true,
@@ -81,6 +84,13 @@
             {
               "resources": "/#1.0.0",
               "permissions": "get"
+            },
+            {
+              "resources": [
+                "/users#1.0.0",
+                "/users/:id#1.0.0"
+              ],
+              "permissions": "*"
             }
           ]
         }

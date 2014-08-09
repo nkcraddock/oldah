@@ -16,11 +16,14 @@ if ( !process.env.NODE_ENV ) {
 var path    = require('path');
 var restify = require('restify');
 var bunyan  = require('bunyan');
+var nconf = require(path.join(__dirname, 'helpers', 'config.js')); 
+var mongoose = require('mongoose');
+var config = require(path.join(__dirname, 'config', 'global.json'));
 
-var nconf = require('nconf').file({
-  file: path.join( __dirname, 'config', 'global.json' )
-});
-
+/**
+ * Mongo
+ */
+mongoose.connect(config.mongo.uri);
 /**
  * Logging
  */
@@ -46,8 +49,13 @@ var server = restify.createServer({
   name       : nconf.get('Server:Name'),
   version    : nconf.get('Server:DefaultVersion'),
   acceptable : nconf.get('Server:Acceptable'),
-  log        : Logger
+  log        : Logger,
+  formatters : {
+    'application/json': require(path.join(__dirname, 'helpers/jsonFormatter.js'))
+  }
 });
+
+
 
 /**
  * Server plugins
@@ -117,7 +125,8 @@ var setupMiddleware = function ( middlewareName ) {
 
 [
   'root',
-  'secret'
+  'secret',
+  'users'
 ]
 .map( setupMiddleware );
 

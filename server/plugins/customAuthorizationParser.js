@@ -30,7 +30,6 @@ var parseAuthHeader = function(authorizationHeader) {
       deferred.reject(error);
     } else {
       var claims = JSON.parse(body);
-      console.log(claims.email);
       deferred.resolve({
         raw: authorizationHeader,
         scheme: 'oauth2',
