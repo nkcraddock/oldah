@@ -25,8 +25,9 @@ module.exports = function(req, res, body) {
     }
   }
 
-  if (Buffer.isBuffer(body))
+  if (Buffer.isBuffer(body)) {
     body = body.toString('base64');
+  }
 
   var data = JSON.stringify(body, null, 2);
 

@@ -19,7 +19,7 @@
   "plusplus"      : false,    // true: Prohibit use of `++` & `--`
   "quotmark"      : "single",    // Quotation mark consistency:
   "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
-  "unused"        : true,     // true: Require all defined variables be used
+  "unused"        : false,     // true: Require all defined variables be used
   "maxparams"     : false,    // {int} Max number of formal params allowed per function
   "maxdepth"      : false,    // {int} Max depth of nested blocks (within functions)
   "maxstatements" : false,    // {int} Max number statements per function
@@ -55,8 +55,11 @@
   // Custom Globals
   "globals"       : {
     "nconf": true,
-    "describe": true,
-    "before": true,
-    "it": true
-  }        // additional predefined global variables
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false
+  }
 }
