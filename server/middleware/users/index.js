@@ -58,6 +58,10 @@ routes.push({
   },
   middleware: function(req, res, next) {
     User.remove({ _id: req.params.id }, function(err) {
+      if(err) {
+        return next(err);
+      }
+      
       res.send(200);
     });
   }

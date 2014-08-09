@@ -8,8 +8,18 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-node-inspector');
 	grunt.loadNpmTasks('grunt-open');
+	grunt.loadNpmTasks('grunt-contrib-mongo-migrate');
 
 	grunt.initConfig({
+		'mongo-migrate': {
+			create: '',
+			up: '',
+			down: '',
+			options: {
+				config:  'config/global.json',
+				dbPropName: 'mongo'
+			}
+		},
 		'node-inspector': {
 			dev: {
 				options: {
@@ -68,5 +78,6 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['concurrent:dev']);
 	grunt.registerTask('debug', ['concurrent:debug']);
+	grunt.registerTask('fluff', ['mongo-migrate:down', 'mongo-migrate:up']);
 
 };

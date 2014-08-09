@@ -17,7 +17,10 @@
     "restify-mongoose": "~0.2.2",
     "mongoose": "~3.8.14",
     "grunt": "~0.4.5",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-mongo-migrate": "~1.0.2",
+    "mongo-migrate": "~0.1.0",
+    "mongodb": "~1.4.8"
   },
   "devDependencies": {
     "supertest": "^0.13.0",

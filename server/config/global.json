@@ -25,7 +25,9 @@
     "Headers": ["authorization"]
   },
   "mongo": {
-    "uri": "mongodb://localhost/oldah"
+    "uri": "mongodb://localhost/oldah",
+    "host": "localhost",
+    "db": "oldah"
   },
   "Security": {
     "UseAuth": true,
